@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 question = pd.read_excel('explainations.xlsx', sheet_name='question')
@@ -136,22 +136,22 @@ else:
     col2.line_chart(data=sham_symptom_df, x='t', y='mean', color='symptom_variables')
 
 
-    # fig, (ax_real, ax_sham) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
-    # time_points = [0, 1]  # 0 for 'Before Treatment', 1 for 'After Treatment'
-    # for i, variable in enumerate(symptom_variables):
-    #     ax_real.plot(time_points, [mean_b_t0_real[i], mean_b_t2_real[i]], 'o-', label=variable)
-    # for i, variable in enumerate(symptom_variables):
-    #     ax_sham.plot(time_points, [mean_b_t0_sham[i], mean_b_t2_sham[i]], 'o-', label=variable)
-    # ax_real.set_xticks(time_points)
-    # ax_real.set_xticklabels(['Before', 'After'])
-    # ax_sham.set_xticks(time_points)
-    # ax_sham.set_xticklabels(['Before', 'After'])
-    # ax_real.set_title('Real')
-    # ax_sham.set_title('Sham')
-    # ax_sham.legend(title='Symptom Variables', bbox_to_anchor=(1.05, 1), loc='upper left')
-    # plt.tight_layout(rect=[0, 0, 0.9, 0.95])  # Leave space for the whole figure title and legend
+    fig, (ax_real, ax_sham) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+    time_points = [0, 1]  # 0 for 'Before Treatment', 1 for 'After Treatment'
+    for i, variable in enumerate(symptom_variables):
+        ax_real.plot(time_points, [mean_b_t0_real[i], mean_b_t2_real[i]], 'o-', label=variable)
+    for i, variable in enumerate(symptom_variables):
+        ax_sham.plot(time_points, [mean_b_t0_sham[i], mean_b_t2_sham[i]], 'o-', label=variable)
+    ax_real.set_xticks(time_points)
+    ax_real.set_xticklabels(['Before', 'After'])
+    ax_sham.set_xticks(time_points)
+    ax_sham.set_xticklabels(['Before', 'After'])
+    ax_real.set_title('Real')
+    ax_sham.set_title('Sham')
+    ax_sham.legend(title='Symptom Variables', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout(rect=[0, 0, 0.9, 0.95])  # Leave space for the whole figure title and legend
 
-    # st.pyplot(fig)
+    st.pyplot(fig)
 
     imaging_df = pd.DataFrame({
         'imaging_variables': imaging_variables, 
