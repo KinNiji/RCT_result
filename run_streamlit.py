@@ -3,10 +3,10 @@ import pandas as pd
 # import matplotlib.pyplot as plt
 
 
-question = pd.read_excel('data/explainations.xlsx', sheet_name='question')
-scale = pd.read_excel('data/explainations.xlsx', sheet_name='scale')
-variables = pd.read_excel('data/explainations.xlsx', sheet_name='variables').set_index('feature')['explanation'].to_dict()
-df = pd.read_csv('result/top10_with_explanation.csv')
+question = pd.read_excel('explainations.xlsx', sheet_name='question')
+scale = pd.read_excel('explainations.xlsx', sheet_name='scale')
+variables = pd.read_excel('explainations.xlsx', sheet_name='variables').set_index('feature')['explanation'].to_dict()
+df = pd.read_csv('top10_with_explanation.csv')
 
 def mapping_variable(variable):
     explanation = variables.get(variable, None)
